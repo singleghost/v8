@@ -1,0 +1,31 @@
+Tests how wasm scripts are reported
+Check that each inspector gets two wasm scripts at module creation time.
+Session #1: Script #0 parsed. URL: wasm://wasm/wasm-7b04570e/wasm-7b04570e-0
+Session #1: Script #1 parsed. URL: wasm://wasm/wasm-7b04570e/wasm-7b04570e-1
+Session #2: Script #0 parsed. URL: wasm://wasm/wasm-7b04570e/wasm-7b04570e-0
+Session #2: Script #1 parsed. URL: wasm://wasm/wasm-7b04570e/wasm-7b04570e-1
+Session #1: Source for wasm://wasm/wasm-7b04570e/wasm-7b04570e-0:
+func $nopFunction
+  nop
+end
+
+Session #1: Source for wasm://wasm/wasm-7b04570e/wasm-7b04570e-1:
+func $main
+  block
+    i32.const 2
+    drop
+  end
+end
+
+Session #2: Source for wasm://wasm/wasm-7b04570e/wasm-7b04570e-0:
+func $nopFunction
+  nop
+end
+
+Session #2: Source for wasm://wasm/wasm-7b04570e/wasm-7b04570e-1:
+func $main
+  block
+    i32.const 2
+    drop
+  end
+end
